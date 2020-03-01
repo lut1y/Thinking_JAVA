@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/exceptions/exceptions.iml" filepath="$PROJECT_DIR$/exceptions/exceptions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/generics/generics.iml" filepath="$PROJECT_DIR$/generics/generics.iml" />
+      <module fileurl="file://$PROJECT_DIR$/holding/holding.iml" filepath="$PROJECT_DIR$/holding/holding.iml" />
+      <module fileurl="file://$PROJECT_DIR$/innerclasses/innerclasses.iml" filepath="$PROJECT_DIR$/innerclasses/innerclasses.iml" />
+      <module fileurl="file://$PROJECT_DIR$/interfaces/interfaces.iml" filepath="$PROJECT_DIR$/interfaces/interfaces.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mindview/mindview.iml" filepath="$PROJECT_DIR$/mindview/mindview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/polymorphism/polymorphism.iml" filepath="$PROJECT_DIR$/polymorphism/polymorphism.iml" />
+      <module fileurl="file://$PROJECT_DIR$/strings/strings.iml" filepath="$PROJECT_DIR$/strings/strings.iml" />
+      <module fileurl="file://$PROJECT_DIR$/threads/threads.iml" filepath="$PROJECT_DIR$/threads/threads.iml" />
+      <module fileurl="file://$PROJECT_DIR$/typeinfo/typeinfo.iml" filepath="$PROJECT_DIR$/typeinfo/typeinfo.iml" />
+    </modules>
+  </component>
+</project>
