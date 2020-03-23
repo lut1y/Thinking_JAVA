@@ -1,6 +1,5 @@
-/**
- * Created by Dmitriy on 11.11.2019.
- */
+import java.util.Stack;
+
 public class StackCollision {
     public static void main(String[] args) {
         Stack<String> stack = new Stack<String>();

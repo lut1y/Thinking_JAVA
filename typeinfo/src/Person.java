@@ -6,6 +6,12 @@ public class Person {
     public final String last;
     public final String address;
     // и т.д.
+    public Person(String first) {
+        this.first = first;
+        this.last = "";
+        this.address = "";
+    }
+
     public Person(String first, String last, String address) {
         this.first = first;
         this.last = last;

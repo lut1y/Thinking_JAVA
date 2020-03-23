@@ -1,6 +1,5 @@
-/**
- * Created by Dmitriy on 23.01.2020.
- */
+
+/*
 class A {}
 class B extends A {
     int i = 0;
@@ -41,3 +40,4 @@ public class Task8 {
         printInfo(new B());
     }
 }
+*/

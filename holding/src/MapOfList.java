@@ -1,14 +1,10 @@
 import pets.*;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Dmitriy on 11.11.2019.
- */
 public class MapOfList {
     public static Map<Person, List<? extends Pet>>
         petPeople = new HashMap<Person, List<? extends Pet>>();

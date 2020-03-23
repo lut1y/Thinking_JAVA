@@ -6,9 +6,6 @@ import shape.Shape;
 import shape.Square;
 import shape.Triangle;
 
-/**
- * Created by Dmitriy on 23.12.2019.
- */
 public class RandomShapeGenerator implements Iterable<Shape> {
     private Random rand = new Random(47);
     private int counter;
@@ -33,17 +30,14 @@ public class RandomShapeGenerator implements Iterable<Shape> {
         }
     }
 
-    @Override
     public Iterator<Shape> iterator() {
         return new Iterator<Shape>() {
             private int index = 0;
 
-            @Override
             public boolean hasNext() {
                 return index < counter;
             }
 
-            @Override
             public Shape next() {
                 return shapes[index++];
             }
