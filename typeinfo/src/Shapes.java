@@ -1,9 +1,6 @@
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * Created by Dmitriy on 21.01.2020.
- */
 abstract class Shape {
     boolean flag = false;
     void draw() {

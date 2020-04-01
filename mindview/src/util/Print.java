@@ -1,10 +1,5 @@
 package util;
-
 import java.io.PrintStream;
-
-/**
- * Created by Dmitriy on 29.01.2020.
- */
 // Методы печати, которые могут использоваться
 // без спецификаторов благодаря конструкции
 // Java SE5 static import.
