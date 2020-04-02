@@ -12,4 +12,9 @@ public class Mouse extends Rodent {
             return new Mouse();
         }
     }
+
+    @Override
+    public void speak() {
+        System.out.println(this + " speak \"Pi!\"");
+    }
 }

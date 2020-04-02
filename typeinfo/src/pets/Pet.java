@@ -14,4 +14,6 @@ public class Pet extends Individual {
             return new Pet();
         }
     }
+
+    public void speak() {}
 }

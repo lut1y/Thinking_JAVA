@@ -12,4 +12,9 @@ public class Dog extends Pet {
             return new Dog();
         }
     }
+
+    @Override
+    public void speak() {
+        System.out.println(this + " speak \"Woof!\"");
+    }
 }
