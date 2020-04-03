@@ -10,6 +10,26 @@ interface UnaryFunction<R, T> {R function(T x); }
 interface Collector<T> extends UnaryFunction<T, T> { T result(); }
 interface UnaryPredicate<T> { boolean test(T x); }
 
+class Food {
+    private String foodName = "";
+    public Food() { foodName = ""; }
+    public Food(String name) { foodName = name; }
+    public void set(String name) { foodName = name; }
+    public String get() { return foodName; }
+    public void eat() { foodName = ""; }
+    public String toString() { return "Food: " + foodName; }
+}
+
+class Drink {
+    private String drinkName = "";
+    public Drink() { drinkName = ""; }
+    public Drink(String name) { drinkName = name; }
+    public void set(String name) { drinkName = name; }
+    public String get() { return drinkName; }
+    public void eat() { drinkName = ""; }
+    public String toString() { return "Drink: " + drinkName; }
+}
+
 public class Functional {
     public static <T> T reduce(Iterable<T> seq, Combiner<T> combiner) {
         Iterator<T> it = seq.iterator();
@@ -89,6 +109,12 @@ public class Functional {
         public Integer result() { return val; }
     }
 
+    static class MealMaker implements Combiner<Food> {
+        public Food combine(Food f1, Food f2) {
+            return new Food(f1.get() + " " + f2.get());
+        }
+    }
+
     public static void main(String[] args) {
         List<Integer> li = Arrays.asList(1, 2, 3, 4, 5, 6, 7);
         Integer result = reduce(li, new IntegerAdder());
@@ -130,6 +156,31 @@ public class Functional {
 
         print(ral);
         print(transform(lbd, new BigDecimalUlp()));
+
+        List<Food> lf = Arrays.asList(new Food("bread"), new Food("ham"), new Food("cheese"));
+        Food meal = reduce(lf, new MealMaker());
+        print(meal);
+        List<Drink> ld = Arrays.asList(new Drink("water"), new Drink("orange juice"), new Drink("lemon"));
+        Drink drink = reduce(ld, new DrinkMaker());
+        print(drink);
+        print(forEach(lf, new CookedMeal()).result());
     }
 
+    private static class DrinkMaker implements Combiner<Drink> {
+        public Drink combine(Drink drink1, Drink drink2) {
+            return new Drink(drink1.get() + " " + drink2.get());
+        }
+    }
+
+    private static class CookedMeal implements Collector<Food> {
+        private Food f = new Food("");
+        public Food function(Food x) {
+            f = new Food(f.get() + " " + x.get());
+            return f;
+        }
+
+        public Food result() {
+            return new Food("cooked" + f.get());
+        }
+    }
 }
