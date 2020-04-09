@@ -1,13 +1,10 @@
 package util;
-
-
+// Простые реализации генераторов.
 public class CountingGenerator {
-    // Реализация простого генератора
-
     public static class Boolean implements Generator<java.lang.Boolean> {
         private boolean value = false;
         public java.lang.Boolean next() {
-            value = !value; // Just flips back and forth
+            value = !value; // Простое переключение
             return value;
         }
     }

@@ -1,11 +1,9 @@
 package util;
-
+// Генераторы, выдающие случайные значения.
 import java.util.Random;
 
 public class RandomGenerator {
-    // Генератор, создающий новые значения
     private static Random r = new Random(47);
-
     public static class Boolean implements Generator<java.lang.Boolean> {
         public java.lang.Boolean next() {
             return r.nextBoolean();
