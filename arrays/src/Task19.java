@@ -20,6 +20,7 @@ public class Task19 {
         Task19[][] arT19_ = {{new Task19(1), new Task19(2)}, {new Task19(1), new Task19(2)}};
         System.out.println(Arrays.deepEquals(arT19, arT19_));
 
+        System.out.println(Arrays.toString(t19));
 
     }
 }
