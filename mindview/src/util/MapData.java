@@ -1,10 +1,6 @@
 package util;
-import util.Pair;
 import java.util.LinkedHashMap;
 
-/**
- * Created by Dmitriy on 29.01.2020.
- */
 public class MapData<K, V> extends LinkedHashMap<K, V> {
     // Один генератор Pair:
     public MapData(Generator<Pair<K,V>> gen, int quantity) {

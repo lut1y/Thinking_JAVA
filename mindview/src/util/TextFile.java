@@ -4,9 +4,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
- * Created by Dmitriy on 16.01.2020.
- */
 public class TextFile extends ArrayList<String> {
 
     public static String read(String fileName) {

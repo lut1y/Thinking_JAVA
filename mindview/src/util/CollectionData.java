@@ -1,6 +1,5 @@
 package util;
 // Заполнение коллекции с использованием объекта генератора.
-
 import java.util.ArrayList;
 
 public class CollectionData<T> extends ArrayList<T> {
