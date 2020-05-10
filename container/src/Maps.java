@@ -13,7 +13,7 @@ public class Maps {
         print(map.keySet());
     }
 
-    public static void printKeys(Properties map) {
+    public static void printKeys2(Map<Object, Object> map) {
         printnb("Size = " + map.size() + ", ");
         printnb(" Keys: ");
         print(map.keySet());
@@ -39,7 +39,7 @@ public class Maps {
         print("***");
     }
 
-    public static void test(Properties map) {
+    public static void test2(Map<Object, Object> map) {
         print(map.getClass().getSimpleName());
         map.putAll(new CountingMapData(25));
         printnb("Values: ");
@@ -50,7 +50,7 @@ public class Maps {
         Integer key = (Integer) map.keySet().iterator().next();
         print("First key in map: " + key);
         map.remove(key);
-        printKeys(map);
+        printKeys2(map);
         map.clear();
         print("map.isEmpty(): " + map.isEmpty());
         map.putAll(new CountingMapData(25));
@@ -66,6 +66,6 @@ public class Maps {
         test(new IdentityHashMap<Integer, String>());
         test(new ConcurrentHashMap<Integer, String>());
         test(new WeakHashMap<Integer, String>());
-        test(new Properties());
+        test2(new Properties());
     }
 }
