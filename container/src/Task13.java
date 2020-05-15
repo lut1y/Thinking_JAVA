@@ -25,5 +25,24 @@ public class Task13 {
             associativeArray.put(s, count);
         }
         print(associativeArray);
+        print("***");
+        Set<String> tf1 = new TreeSet<String>(new TextFile(
+                "C:\\Users\\Developer\\IdeaProjects\\JAVA\\Thinking_Java\\mindview\\src\\util\\TextFile.java",
+                "\\W+"));
+        SlowMap<String, Integer> slowMap =
+                new SlowMap<String, Integer>();
+
+        ArrayList<String> words1 = new TextFile(
+                "C:\\Users\\Developer\\IdeaProjects\\JAVA\\Thinking_Java\\mindview\\src\\util\\TextFile.java",
+                "\\W+");
+
+        for(String s : tf1) {
+            int count = 0;
+            for(String t : words) {
+                if(t.equals(s)) count++;
+            }
+            slowMap.put(s, count);
+        }
+        print(slowMap);
     }
 }

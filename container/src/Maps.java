@@ -67,5 +67,6 @@ public class Maps {
         test(new ConcurrentHashMap<Integer, String>());
         test(new WeakHashMap<Integer, String>());
         test2(new Properties());
+        test2(new SlowMap());
     }
 }
