@@ -56,32 +56,6 @@ public class Task20<K,V> extends AbstractMap<K,V> {
         return set;
     }
 
-    // Три метода для помощи в работе с EntrySet.iterator():
-    private int firstNonEmptyBucket() {
-        // Находим первый ненулевой index в массиве buckets
-        if(buckets.length < 1) return -1;
-        for(int j=0; j < buckets.length; j++)
-            if(buckets[j] != null) return j;
-        return -1;
-    }
-    private int start(int i) {
-        // функция нахождения числа записей LinkedList
-        // c начала до i
-        int first = this.firstNonEmptyBucket();
-        if(i < first) return -1;
-        if(i == first) return 0;
-        int result = 0;
-        for(int j = first; j < i; j++)
-            if(buckets[j] != null) result += buckets[j].size();
-        return result;
-    }
-    private int end(int i) {
-        // функция нахождения числа записей c начала до i + i-е List'ы
-        int first = this.firstNonEmptyBucket();
-        if(i < first) return -1;
-        return start(i) + ((buckets[i] == null) ? 0 : buckets[i].size());
-    }
-
     public void clear() {
         for(LinkedList<MapEntry<K,V>> bucket : buckets)
             if(bucket != null)
@@ -92,114 +66,15 @@ public class Task20<K,V> extends AbstractMap<K,V> {
         V v = null;
         if(this.get(key) != null) {
             int index = Math.abs(key.hashCode()) % SIZE;
-            for (MapEntry<K, V> iPair : buckets[index])
-                if (iPair.getKey().equals(key)) {
+            for(MapEntry<K,V> iPair : buckets[index])
+                if(iPair.getKey().equals(key)) {
                     v = iPair.getValue();
-                    buckets[index].remove(iPair);
+                    int i = buckets[index].indexOf(iPair);
+                    buckets[index].remove(i);
                     break;
                 }
         }
         return v;
-    }
-
-    public int size() {
-        int result = 0;
-        for(LinkedList bucket : buckets)
-            if(bucket != null) result += bucket.size();
-        return result;
-    }
-
-    private EntrySet entries = new EntrySet();
-    private class EntrySet extends AbstractSet<Map.Entry<K,V>> {
-    // Множество Map.Entry
-        public Iterator<Entry<K, V>> iterator() {
-            return new Iterator<Entry<K, V>>() {
-                int index = -1;
-                public boolean hasNext() {
-                    return index < size()-1;
-                }
-
-                public Entry<K, V> next() {
-                    int i = ++index;
-                    for(int j=0; j<SIZE; j++) {
-                        if((start(j) <= index) && (index < end(j)))
-                            return new MapEntry(buckets[j].get(index - start(j)).getKey(),
-                                    buckets[j].get(index - start(j)).getValue());
-                    }
-                    return null;
-                }
-
-                public void remove() {
-                    for(int j=0; j < SIZE; j++)
-                        if(start(j) <= index && index < end(j))
-                            buckets[j].remove(index - start(j));
-                        index--;
-                }
-            };
-        }
-
-        public int size() {
-            return Task20.this.size();
-        }
-    }
-    private KeySet keys = new KeySet();
-    private class KeySet extends AbstractSet<K> {
-    // Множество ключей
-        public Iterator<K> iterator() {
-            return new Iterator<K>() {
-                int index = -1;
-                public boolean hasNext() {
-                    return index < size()-1;
-                }
-
-                public K next() {
-                    int i = ++index;
-                    for(int j=0; j < SIZE; j++)
-                        if((start(j) <= index) && (index < end(j)))
-                            return buckets[j].get(index-start(j)).getKey();
-                    return null;
-                }
-
-                public void remove() {
-                    for(int j=0; j < SIZE; j++)
-                        if(start(j) <= index && index < end(j))
-                            buckets[j].remove(index-start(j));
-                    index--;
-                }
-            };
-        }
-
-        public int size() {
-            return Task20.this.size();
-        }
-    }
-
-
-    public boolean isEmpty() {
-        return this.size()==0;
-    }
-
-    public boolean containsKey(Object key) {
-        int index = Math.abs(key.hashCode()) % SIZE;
-        if(buckets[index] == null) return false;
-        for(MapEntry<K,V> iPair : buckets[index])
-            if(iPair.getKey().equals(key))
-                return true;
-        return false;
-    }
-
-    public boolean containsValue(Object value) {
-        for(LinkedList<MapEntry<K,V>> bucket : buckets) {
-            if(bucket != null)
-                for(MapEntry<K,V> iPair : bucket)
-                    if(iPair.getValue().equals(value))
-                        return true;
-        }
-        return false;
-    }
-
-    public int hashCode() {
-        return this.entrySet().hashCode();
     }
 
     public static void main(String[] args) {
@@ -210,12 +85,9 @@ public class Task20<K,V> extends AbstractMap<K,V> {
         System.out.println("m.entrySet(): " + m.entrySet());
         m.put("ANGOLA", "Луанда");
         System.out.println(m);
-        System.out.println("m.remove(\"ANGOLA\"): " + m.remove("ANGOLA"));
+        System.out.println(m.remove("ANGOLA"));
         System.out.println(m);
-        System.out.println("m.containsKey(\"EGYPT\"): " + m.containsKey("EGYPT"));
-        System.out.println("m.containsValue(\"Porto-Novo\"): " + m.containsValue("Porto-Novo"));
         m.clear();
         System.out.println(m);
-        System.out.println("m.isEmpty(): " + m.isEmpty());
     }
 }
